@@ -45,16 +45,27 @@ public class Arrs {
         System.out.println();
 
         /*
-        Задание 5
+        Задание 5**
         ** Задать одномерный массив и найти в нем минимальный
         и максимальный элементы (без помощи интернета)
          */
 
-        System.out.println("Задание 5");
+        System.out.println("Задание 5**");
         compObj();
         System.out.println();
 
-        }
+        /*
+        Задание 6**
+        Написать метод, в который передается не пустой одномерный целочисленный массив,
+        метод должен вернуть true, если в массиве есть место, в котором сумма левой и правой
+        части массива равны. Примеры: checkBalance([2, 2, 2, 1, 2, 2, || 10, 1]) → true,
+        checkBalance([1, 1, 1, || 2, 1]) → true, граница показана символами ||,
+        эти символы в массив не входят.
+         */
+
+        System.out.println("Задание 6**");
+        System.out.println(checkBalance(new int[]{1,2,3,4,5,6}));
+    }
 
     public static void invertArr() // задание 1
     {
@@ -62,28 +73,24 @@ public class Arrs {
 
         System.out.println(Arrays.toString(arrZeroOne));
 
-        for (int i = 0; i < arrZeroOne.length; i++)
-        {
-            if (arrZeroOne[i] == 0)
-            {
+        for (int i = 0; i < arrZeroOne.length; i++) {
+            if (arrZeroOne[i] == 0) {
                 arrZeroOne[i] = arrZeroOne[i] + 1;
-            } else
-                {
+            } else {
                 arrZeroOne[i] = arrZeroOne[i] - 1;
-                }
+            }
         }
         System.out.println(Arrays.toString(arrZeroOne));
     }
 
     public static void addArray() // задание 2
     {
-        int z=0;
+        int z = 0;
         int[] arrAdd3 = new int[8];
 
-        for (int i = 0; i < arrAdd3.length; i++)
-        {
+        for (int i = 0; i < arrAdd3.length; i++) {
             arrAdd3[i] = z;
-            z = z+3;
+            z = z + 3;
         }
         System.out.println(Arrays.toString(arrAdd3));
     }
@@ -94,10 +101,8 @@ public class Arrs {
 
         System.out.println(Arrays.toString(arrMult2));
 
-        for(int i = 0; i<arrMult2.length; i++)
-        {
-            if (arrMult2[i] < 6)
-            {
+        for (int i = 0; i < arrMult2.length; i++) {
+            if (arrMult2[i] < 6) {
                 arrMult2[i] *= 2;
             }
         }
@@ -108,13 +113,11 @@ public class Arrs {
     {
         int[][] arrDiag = new int[10][10];
 
-        for(int i = 0; i < arrDiag.length; i++)
-        {
-            for(int j = 0; j < arrDiag.length; j++)
-            {
-                if(i == j) arrDiag[i][j] = 1; // диагональ лев.верх-прав.низ
+        for (int i = 0; i < arrDiag.length; i++) {
+            for (int j = 0; j < arrDiag.length; j++) {
+                if (i == j) arrDiag[i][j] = 1; // диагональ лев.верх-прав.низ
 
-                if(j == arrDiag.length - 1 - i) arrDiag[i][j] = 1; // диагональ лев.низ-прав.верх
+                if (j == arrDiag.length - 1 - i) arrDiag[i][j] = 1; // диагональ лев.низ-прав.верх
 
                 System.out.print(arrDiag[i][j] + " ");
             }
@@ -122,9 +125,42 @@ public class Arrs {
         }
     }
 
-    public static void compObj()
-    {
+    public static void compObj() {
+        int[] arrMinMax = {7, 3, 16, 8, -11, 13};
+        int min = arrMinMax[0];
+        int max = arrMinMax[0];
 
+        for (int i = 0; i < arrMinMax.length; i++) {
+            if (min > arrMinMax[i]) {
+                min = arrMinMax[i];
+            }
+
+            if (max < arrMinMax[i]) {
+                max = arrMinMax[i];
+            }
+        }
+        System.out.println("Минимальное значение объекта в массиве " + Arrays.toString(arrMinMax) + ": " + min);
+        System.out.println("Максимальное значение объекта в массиве " + Arrays.toString(arrMinMax) + ": " + max);
+    }
+
+    public static boolean checkBalance(int[] myArray)
+    {
+       // myArray = new int[]{5, 4, 3, 8, 1, 3};
+        int sum = 0;
+        int sumL = 0;
+        int sumR;
+
+      for(int i = 0; i < myArray.length; i++)
+      {
+          sum += myArray[i];
+      }
+          for(int j = 0; j < myArray.length - 1; j++)
+          {
+              sumL += myArray[j];
+              sumR = sum - sumL;
+              if(sumL == sumR) return true;
+          }
+      return false;
     }
 
 }
