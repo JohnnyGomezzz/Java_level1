@@ -30,6 +30,7 @@ public class GuessTheNumberAndWord {
         do {
             Scanner scan = new Scanner(System.in);
             num = scan.nextInt();
+
             if (num < minNum || num > maxNum) {
                 System.out.println("Это число не от 0 до 9!");
             }
@@ -111,7 +112,7 @@ public class GuessTheNumberAndWord {
 
             if (words[z].equals(word)) {
                 System.out.println("Ты угадал, Человек! Проходи и черпай столько знаний, сколько сможешь унести!");
-                break;
+                System.exit(0);
             } else {
                 if (words[z].length() <= word.length()) {
                     for (n = 0, h = 0; n < words[z].length(); n++, h++) {

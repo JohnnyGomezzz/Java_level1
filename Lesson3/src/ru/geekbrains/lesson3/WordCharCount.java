@@ -9,6 +9,7 @@ public class WordCharCount {
     public static void main(String[] args) {
         while (true) {
             Scanner scan = new Scanner(System.in);
+            scan.hasNextLine();
             String word1 = scan.nextLine();
             System.out.println(word1);
 
@@ -47,7 +48,7 @@ public class WordCharCount {
                             System.out.print("*");
                         }
                     }
-                }
+                }System.out.println();
                 step++;
             }
         System.out.println("Ещё раз? 1 - да, 0 - нет.");
