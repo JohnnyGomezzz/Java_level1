@@ -17,38 +17,38 @@ public abstract class Animal
         this.maxJumpHeight = maxJumpHeight;
     }
 
-    boolean runLength(int currentRunLength)
+    boolean runLength()
     {
         return currentRunLength <= maxRunLength;
     }
 
-    boolean jumpHeight(int currentJumpHeight)
+    boolean jumpHeight()
     {
         return currentJumpHeight <= maxJumpHeight;
     }
 
-    boolean swimLength(int currentSwimLength)
+    boolean swimLength()
     {
         return currentSwimLength <= maxSwimLength;
     }
 
     void result()
     {
-        if (runLength(currentRunLength)) {
+        if (runLength()) {
             System.out.println(name + " может пробежать " + currentRunLength + " м.");
         }
         else {
             System.out.println(name + " не может пробежать " + currentRunLength + " м.");
         }
 
-        if (jumpHeight(currentJumpHeight)) {
-            System.out.println(name + " может перепрыгнуть препятствие в " + currentJumpHeight + " м.");
+        if (jumpHeight()) {
+            System.out.println(name + " может перепрыгнуть препятствие в " + currentJumpHeight + " см.");
         }
         else {
-            System.out.println(name + " не может перепрыгнуть препятствие в " + currentJumpHeight + " м.");
+            System.out.println(name + " не может перепрыгнуть препятствие в " + currentJumpHeight + " см.");
         }
 
-        if (swimLength(currentSwimLength)) {
+        if (swimLength()) {
             System.out.println(name + " может проплыть " + currentSwimLength + " м.");
         }
         else {
