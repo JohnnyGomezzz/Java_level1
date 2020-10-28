@@ -1,36 +1,108 @@
+package com.JohnnyGomezzz;
+
 public class Main {
 
-    public static void main(String[] args)
-    {
-        Employee [] employArray = new Employee[5]; //создаём массив из пяти сотрудников
+    public static void main(String[] args) {
 
-        employArray[0] = new Employee("Авдеев Роман Сергеевич", "генеральный директор",
-                "avrom@company.com", "+7-927-656-88-78", 500000, 50);
-        employArray[1] = new Employee("Безухов Пьер Жанпольевич", "финансовый директор",
-                "bezuh@company.com","+7-926-564-87-23", 300000, 30);
-        employArray[2] = new Employee("Коробейникова Лариса Моисеевна", "главный бухгалтер", "korla@company.com",
-                "+7-812-555-18-44", 200000, 65);
-        employArray[3] = new Employee("Васильев Антон Феоктистович", "охранник", "ohrana@company.com",
-                "+7-921-865-37-99", 50000, 44);
-        employArray[4] = new Employee("Зарыев Замиг Фикрет оглы", "водитель-экспедитор", "zamigas@gmail.com",
-                "+7-999-644-52-97", 40000, 32);
+        Object[] participants =     // создаём массив Участники
+                {
+                        new Human("Антон", 1.5, 1000),
+                        new Robot("T1000", 1, 2000),
+                        new Cat("Мурзик", 2, 500)
+                };
 
-        System.out.println("Все сотрудники ООО \"Рога и копыта\":\n");
+        Object[] obstacles =        // создаём массив Препятствия
+                {
+                        new Wall(0.4),
+                        new Track(500),
+                        new Wall(1.2),
+                        new Track(1500),
+                        new Wall(1.6),
+                        new Track(2500)
+                };
 
-        for (Employee employee : employArray)
-        {
-            employee.employeeInfo();
-        }
+        for (Object participant : participants) {
 
-        System.out.println("Сотрудники старше 40 лет:\n");
+            for (Object obstacle : obstacles) {     // массивом Участники перебираем массив Препятствия
 
-        for (Employee employee : employArray)
-        {
-            if (employee.age > 40) {
-                System.out.println(employee.name);
+                if (participant instanceof Human && // участник Человек проходит препятствие Стена
+                        obstacle instanceof Wall) {
+
+                    if (((Human) participant).getJumpHeight() >= ((Wall)obstacle).getHeight())
+                    {
+                        ((Human) participant).jump();
+
+                    } else {
+                        ((Human) participant).notJump();
+                        break;
+                    }
+                }
+
+                if (participant instanceof Human &&  // участник Человек проходит препятствие Дорожка
+                        obstacle instanceof Track) {
+
+                    if (((Human) participant).getRunLength() >= ((Track)obstacle).getLength())
+                    {
+                        ((Human) participant).run();
+
+                    } else {
+                        ((Human) participant).notRun();
+                        break;
+                    }
+                }
+
+                if (participant instanceof Robot &&  // участник Робот проходит препятствие Стена
+                        obstacle instanceof Wall){
+
+                    if (((Robot) participant).getJumpHeight() >= ((Wall)obstacle).getHeight())
+                    {
+                        ((Robot) participant).jump();
+
+                    } else {
+                        ((Robot) participant).notJump();
+                        break;
+                    }
+                }
+
+                if (participant instanceof Robot &&  // участник Робот проходит препятствие Дорожка
+                        obstacle instanceof Track){
+
+                    if (((Robot) participant).getRunLength() >= ((Track)obstacle).getLength())
+                    {
+                        ((Robot) participant).run();
+
+                    } else {
+                        ((Robot) participant).notRun();
+                        break;
+                    }
+                }
+
+                if (participant instanceof Cat &&  // участник Кот проходит препятствие Стена
+                        obstacle instanceof Wall) {
+
+                    if (((Cat) participant).getJumpHeight() >= ((Wall)obstacle).getHeight())
+                    {
+                        ((Cat) participant).jump();
+
+                    } else {
+                        ((Cat) participant).notJump();
+                        break;
+                    }
+                }
+
+                if (participant instanceof Cat &&  // участник Кот проходит препятствие Дорожка
+                        obstacle instanceof Track) {
+
+                    if (((Cat) participant).getRunLength() >= ((Track)obstacle).getLength())
+                    {
+                        ((Cat) participant).run();
+
+                    } else {
+                        ((Cat) participant).notRun();
+                        break;
+                    }
+                }
             }
         }
-
     }
-
 }
